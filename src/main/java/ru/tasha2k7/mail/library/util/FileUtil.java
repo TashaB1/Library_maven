@@ -28,8 +28,9 @@ public class FileUtil {
     public void writeFile(String strJson, String path) {
         try (FileWriter fileWriter = new FileWriter(path, true)) {
             fileWriter.write(strJson);
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ex) {
+            Logger.getLogger(FileUtil.class.getName())
+                    .log(Level.SEVERE, null, ex);
         }
     }
 

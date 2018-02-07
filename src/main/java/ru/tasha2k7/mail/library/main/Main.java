@@ -54,14 +54,13 @@ public class Main {
         System.out.println(json.getClass());
         //System.out.println(json.toString());*/
 
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Gson gson = new GsonBuilder().setPrettyPrinting().setLenient().create();
 
         JsonObject json = new JsonObject();
         try {
             JsonParser parser = new JsonParser();
             JsonElement jsonElement = parser.parse(new FileReader(PATH_JSON));
             json = gson.fromJson(jsonElement.getAsJsonObject(), JsonObject.class);
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

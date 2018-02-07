@@ -108,15 +108,15 @@ public class BooksServiceImpl implements BooksService {
         FileUtil fileUtil = new FileUtil();
         BooksServiceImpl booksService = new BooksServiceImpl();
         fileUtil.deleteAllFilesFolder(path);
-
+        String pathTitle;
         JsonArray books = json.getAsJsonArray("books");
-
         for (JsonElement book : books) {
             String title = book.getAsJsonObject().get("title").getAsString();
-            String pathTitle = path + title + ".json";
+            pathTitle = path + title + ".json";
             String string = gson.toJson(book);
             booksService.write(string, pathTitle);
         }
+
         System.out.println("Готово. Расположение файла: " + path + "*");
     }
 
